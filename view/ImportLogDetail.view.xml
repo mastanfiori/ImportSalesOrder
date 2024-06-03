@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View id="importLogDetailView" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="cus.sd.salesorder.imports1.controller.ImportLogDetail" xmlns:html="http://www.w3.org/1999/xhtml" height="100%">
+	<Page id="importLogPage" title="{i18n>TITLE_DETAIL_LOG}" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<core:ComponentContainer id="logMessagesControlContainer" height="88%"/>
+		</content>
+	</Page>
+</mvc:View>

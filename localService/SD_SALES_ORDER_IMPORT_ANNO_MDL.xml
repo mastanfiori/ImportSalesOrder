@@ -1,0 +1,212 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='ER9CLNT001')/$value"><edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/></edmx:Reference>
+	<edmx:Reference Uri="../../../sap/sd_sales_order_import/$metadata"><edmx:Include Namespace="SD_SALES_ORDER_IMPORT" Alias="SAP"/></edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="sd_sales_order_import_anno_mdl.v1">
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_AutomXtrctnSalesOrderTypeVHType/SalesOrderType">
+				<Annotation Term="Common.Text" Path="SalesOrderType_Text"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_AutomXtrctnSalesOrderTypeVHType">
+				<Annotation Term="UI.SelectionFields"><Collection/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_DischannelvaluehelpType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Distribution Channel"/><PropertyValue Property="TypeNamePlural" String="Distribution Channels"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_OrgDivisionValueHelpType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Division"/><PropertyValue Property="TypeNamePlural" String="Divisions"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesDocImportHistoryType/CreatedByUserName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesDocumentUserVHType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Sales Document User"/><PropertyValue Property="TypeNamePlural" String="Sales Document Users"/></Record>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="UserID"/><PropertyValue Property="Descending" Bool="false"/></Record>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="UserDescription"/><PropertyValue Property="Descending" Bool="false"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesOrderTypeValueHelpType/NumberRangeForIntIDAssignment"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesOrderTypeValueHelpType/NumberRangeForExtIDAssignment"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesOrderTypeValueHelpType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Sales Order Type"/><PropertyValue Property="TypeNamePlural" String="Sales Order Types"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesOrderTypeVH_F1873Type/SalesDocumentTypeLangDepdnt"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.C_SalesOrderTypeVH_F1873Type">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Sales Order Type"/><PropertyValue Property="TypeNamePlural" String="Sales Order Types"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_BusinessSolutionOrderStdVHType/ServiceDocumentStatusName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_BusinessSolutionOrderStdVHType/ServiceDocumentStatus">
+				<Annotation Term="Common.Text" Path="ServiceDocumentStatusName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_BusinessSolutionOrderStdVHType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ServiceDocumentStatusName"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ServiceDocumentStatus"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_Customer_VHType/CustomerAccountGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_Customer_VHType/AuthorizationGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_Customer_VHType/IsBusinessPurposeCompleted"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_Customer_VHType/IsCompetitor"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderImportType/ID"><Annotation Term="UI.Hidden"/></Annotations><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderImportType/TotalNetAmount"/>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderImportFieldListType">
+				<Annotation Term="UI.FieldGroup" Qualifier="HEADER_PRICE">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionRateValue"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionCurrency"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionQuantity"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionQuantityUnit"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Header"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Header">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrder"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrganization"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DistributionChannel"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="OrganizationDivision"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesDistrict"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOffice"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SoldToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShipToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="BillToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PayerParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesEmployee"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ResponsibleEmployee"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PurchaseOrderByCustomer"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PurchaseOrderByShipToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPurchaseOrderDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPurchaseOrderType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequestedDeliveryDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PricingDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FixedValueDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShippingCondition"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShippingType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SDDocumentReason"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DeliveryBlockReason"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="HeaderBillingBlockReason"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CompleteDeliveryIsDefined"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsClassification"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsVersion"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsLocation1"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsLocation2"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPaymentTerms"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PaymentMethod"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TaxDepartureCountry"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="VATRegistrationCountry"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerAccountAssignmentGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AssignmentReference"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PriceListType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPriceGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalCustomerGroup1"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalCustomerGroup2"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalCustomerGroup3"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalCustomerGroup4"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalCustomerGroup5"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TransactionCurrency"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Header"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="ITEM_PRICE">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionRateValue"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionCurrency"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionQuantity"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionQuantityUnit"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Item"/></Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Item">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderItem"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Material"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaterialByCustomer"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ProductStandardID"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequestedQuantity"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequestedQuantityUnit"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequestedDeliveryDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderItemText"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderItemCategory"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Plant"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="StorageLocation"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShippingType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Batch"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PricingDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ItemBillingBlockReason"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShippingPoint"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DeliveryPriority"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DeliveryGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaterialGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PurchaseOrderByCustomer"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaterialPricingGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ProfitCenter"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShipToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="BillToParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PayerParty"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesEmployee"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ResponsibleEmployee"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsClassification"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsLocation1"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsLocation2"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPaymentTerms"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FixedValueDate"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MatlAccountAssignmentGroup"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerGroup"/></Record>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Label" String="Item"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderImportHistoryItemType/ID"><Annotation Term="UI.Hidden"/></Annotations><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderImportHistoryItemType/NumberOfSalesOrders"/>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderItemImportType/ID"><Annotation Term="UI.Hidden"/></Annotations><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderItemImportType/NetAmount"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderItemPricingElementType/ConditionQuantity"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderItemPricingElementType/CndnRoundingOffDiffAmount"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderItemPricingElementType/ConditionAmount"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderPricingElementType/ConditionQuantity"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderPricingElementType/CndnRoundingOffDiffAmount"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderPricingElementType/ConditionAmount"/>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/ID"><Annotation Term="UI.Hidden"/></Annotations><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/ScheduleLineOrderQuantity"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/CorrectedQtyInOrderQtyUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/ConfdOrderQtyByMatlAvailCheck"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/OpenReqdDelivQtyInOrdQtyUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/OpenReqdDelivQtyInBaseUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/OpenConfdDelivQtyInOrdQtyUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/OpenConfdDelivQtyInBaseUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/DeliveredQtyInOrderQtyUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/DeliveredQuantityInBaseUnit"/><Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrderScheduleLineType/OpenDeliveryNetAmount"/>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_SalesOrganizationType/AddressID"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_SALES_ORDER_IMPORT.I_ShippingPointStdVHType/ShippingPointName"><Annotation Term="UI.Hidden"/></Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

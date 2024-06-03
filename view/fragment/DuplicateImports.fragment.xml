@@ -1,0 +1,21 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog id="duplicateItemsDialog" type="Message" state="Warning" title="{i18n>TITLE_IN_DUPLICATE_DIALOG}">
+		<content>
+			<l:VerticalLayout id="duplicateVertialLayout" class="sapUiNoContentPadding">
+				<Text id="duplicateText" text="{i18n>DUPLICATE_CHECK_INFORMATION}" class="sapUiSmallMarginBottom"></Text>
+				<Link id="duplicateShowDetailButton" text="{i18n>DUPLICATE_CHECK_SHOW_DETAILS}" press=".commonEventHandler.onShowDetailsInDuplicate"></Link>
+			</l:VerticalLayout>
+		</content>
+		<beginButton>
+			<Button id="duplicateUploadButton" text="{i18n>UPLODA_WITH_DUPLICATE}" press=".commonEventHandler.onUploadWithDuplicate"/>
+		</beginButton>
+		<endButton>
+			<Button id="duplicateCancelButton" text="{i18n>CANCEL_WITH_DUPLOCATE}" press=".commonEventHandler.onCancelUploadSinceDuplicate"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

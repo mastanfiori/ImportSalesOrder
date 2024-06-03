@@ -1,0 +1,33 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified">
+	<Dialog id="ReuploadDialog" showHeader="true" draggable="true" resizable="true" contentHeight="90%" contentWidth="93%">
+		<customHeader>
+			<Bar id="ReuploadHeaderBar">
+				<contentLeft>
+					<Button id="reuploaderNavBack" icon="sap-icon://navigation-left-arrow" press="onNavBackToReuploadHeaderView"/>
+					<Title id="reuploadDialogTitle" text="{i18n>REUPLOAD_DIALOG_HEADER_TITLE}"/>
+				</contentLeft>
+			</Bar>
+		</customHeader>
+		<content>
+			<NavContainer id="reuploadNavContainer">
+				<Page id="header" showHeader="false">
+					<mvc:XMLView id="reuploadView" viewName="cus.sd.salesorder.imports1.view.Reupload"/>
+				</Page>
+				<Page id="item" showHeader="false">
+					<mvc:XMLView id="reuploadItemView" viewName="cus.sd.salesorder.imports1.view.ReuploadItem"/>
+				</Page>
+			</NavContainer>
+		</content>
+		<beginButton>
+			<Button id="reuploadButton" text="{i18n>BUTTON_IMPORT}" press="onImport" type="Emphasized" enabled="false"/>
+		</beginButton>
+		<endButton>
+			<Button id="reuploadDialogClose" text="{i18n>CLOSE}" press=".onCloseReuploaderDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

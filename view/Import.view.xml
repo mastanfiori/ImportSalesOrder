@@ -1,0 +1,93 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View id="importView" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:u="sap.ui.unified"
+	xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" controllerName="cus.sd.salesorder.imports1.controller.Import"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<f:DynamicPage id="importPage" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title id="importTitle" text="{i18n>PAGE_IMPORT}" wrapping="true" class="sapUiMediumMarginBottom" level="H2"/>
+				</f:heading>
+				<f:actions>
+					<Button id="importDownloadBtn" ariaDescribedBy="importTitle" text="{i18n>BUTTON_DOWNLOAD_TEMPLATE}" type="Transparent" press="onDownloadTemplatePressed"/>
+					<Button id="importLogBtn" ariaDescribedBy="importTitle" text="{i18n>BUTTON_VIEW_IMPORTS}" type="Transparent" press="onShowLogsButtonPressed"/>
+					<Button id="shareActionList" ariaDescribedBy="importTitle" icon="sap-icon://action" type="Transparent" tooltip="{i18n>TOOLTIP_SHARE}" press=".onShareActionList">
+						<layoutData>
+								<OverflowToolbarLayoutData closeOverflowOnInteraction="false" />
+						</layoutData>
+					</Button>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader></f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<VBox id="importPageVBox" fitContainer="true" >
+				<l:VerticalLayout id="importPageVLayout" width="100%" class="sapUiNoMarginBegin sapUiSmallMarginTopBottom">
+					<l:content>
+						<Label id="importFileNameLabel" text="{i18n>LABEL_IMPORT_NAME}" labelFor="UploadNameInput" width="auto"/>
+						<l:VerticalLayout id="importPageVLayout1" width="100%" class="sapUiNoMarginBegin sapUiSmallMarginBottom">
+							<FlexBox width="60%" alignItems="Start" justifyContent="Start" class="sapUiNoMarginBegin sapUiSmallMarginTopBottom">
+								<items>
+									<Input id="importFileNameImport" type="Text" placeholder="{i18n>IMPORT_NAME_PLACEHOLDER}" liveChange="onImportNameChange">
+										<layoutData>
+											<FlexItemData growFactor="1"/>
+										</layoutData>
+									</Input>
+									<u:FileUploader id="importFileUploader" buttonOnly="true" name="SalesOrderFileUploader" tooltip="{i18n>SelectFile}" fileType="XLSX"
+										sendXHR="false" useMultipart="false" change=".commonEventHandler.handleFileChange" uploadComplete=".commonEventHandler.handleUploadComplete"
+										maximumFileSize="10" sameFilenameAllowed="true" typeMissmatch=".commonEventHandler.onTypeMissMatch"
+										fileSizeExceed=".commonEventHandler.onfileSizeExceed" class="sapUiSmallMarginBeginEnd"></u:FileUploader>
+								</items>
+							</FlexBox>
+							<UploadCollection id="importUploadCollection" instantUpload="true" uploadEnabled="true" fileType="xlsx" noDataText="{i18n>NO_FILE_TEXT}"
+								noDataDescription=" " typeMissmatch=".commonEventHandler.onTypeMissMatch" maximumFileSize="1"
+								beforeUploadStarts=".commonEventHandler.onBeforeUploadStarts" uploadComplete=".commonEventHandler.handleUploadComplete"
+								fileSizeExceed=".commonEventHandler.onfileSizeExceed">
+								<toolbar>
+									<OverflowToolbar visible="false"/>
+								</toolbar>
+							</UploadCollection>
+						</l:VerticalLayout>
+						<Table id="importHeaderTable" items="{importSalesOrder>/salesHeaderData}" visible="false" growing="true" growingScrollToLoad="true"
+							autoPopinMode="true" contextualWidth="Auto" fixedLayout="false" hiddenInPopin="Low" popinChanged=".commonEventHandler.onPopinChanged">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="{i18n>HEADER_TABLE_TITLE}" level="H3"/>
+									<ToolbarSpacer/>
+									<Button id="importHeaderDetailBtn" text="{i18n>BUTTON_SHOW_DETAIL}" press=".commonEventHandler.onHandleShowHideDetail"/>
+									<Button id="importHeaderSettingBtn" icon="sap-icon://action-settings" press="onHeaderSettingDialogPress">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns></columns>
+							<items>
+								<ColumnListItem id="importHeaderListItem" type="Navigation" press=".commonEventHandler.onListItemPress"
+									highlight="{importSalesOrder>HIGHLIGHT}">
+									<cells></cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</l:content>
+				</l:VerticalLayout>
+			</VBox>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar id="importHeaderFooterBar">
+				<content>
+					<ToolbarSpacer id="importHeaderToolbarSpacer"/>
+					<Button id="importButton" text="{i18n>BUTTON_IMPORT}" type="Emphasized" press="onImport" enabled="false"/>
+					<Button id="importPageCancel" text="{i18n>BUTTON_CANCEL}" type="Default" press="onCancelPressed"/>
+				</content>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

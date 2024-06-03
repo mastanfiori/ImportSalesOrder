@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:foot="sap.ushell.ui.footerbar">
+	<ActionSheet id="actionSheet" placement="Bottom">
+		<buttons>
+			<Button id="shareEmailButton" icon="sap-icon://email" text="{i18n>BTN_SEND_EMAIL}" press="onShareEmailButton"></Button>
+			<foot:AddBookmarkButton id="SaveAsTile" text="{i18n>BTN_SAVE_AS_TILE}" title="{i18n>appTitle}" showGroupSelection="true" tileIcon="sap-icon://excel-attachment" />
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

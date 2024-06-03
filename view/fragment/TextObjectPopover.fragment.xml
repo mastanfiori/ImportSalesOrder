@@ -1,0 +1,30 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar">
+	<ResponsivePopover id="textPopover" title="{i18n>TEXT_OBJECT_POPOVER_TITLE}" class="sapUiContentPadding" contentWidth="18em" placement="Auto">
+		<endButton>
+			<Button text="{i18n>CLOSE_TEXT_OBJECT_POPOVER}" press=".commonEventHandler.handleTextCloseButton"/>
+		</endButton>
+		<content>
+			<l:VerticalLayout width="100%">
+				<Label text="{i18n>TEXT_TYPE_TITLE}" labelFor="textTypeComboBox"></Label>
+				<Select id="textTypeComboBox" width="100%">
+					<items>
+					</items>
+				</Select>
+				<Label text="{i18n>LANGUAGE_KEY_TITLE}" labelFor="languageKeyComboBox"></Label>
+				<Select id="languageKeyComboBox" width="100%">
+					<items>
+					</items>
+				</Select>
+				<Label text="{i18n>LONG_TEXT_TITLE}" labelFor="textArea"></Label>
+				<TextArea
+					value=""
+					id="textArea" rows="4" width="100%" editable="false"/>
+			</l:VerticalLayout>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

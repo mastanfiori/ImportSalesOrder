@@ -1,0 +1,9 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View controllerName="cus.sd.salesorder.imports1.controller.App" id="app" displayBlock="true" height="100%" xmlns="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<FlexibleColumnLayout id="flexibleColumnLayout" stateChange=".onStateChanged" backgroundDesign="Solid" layout="{ui>/layout}"/>
+</mvc:View>

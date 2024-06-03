@@ -1,0 +1,74 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View id="importHistory" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:smarttable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:smartlink="sap.ui.comp.navpopover"
+	xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:smartVariantManagement="sap.ui.comp.smartvariants"
+	xmlns:foot="sap.ushell.ui.footerbar" controllerName="cus.sd.salesorder.imports1.controller.ImportHistory"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<f:DynamicPage id="ImportHistoryPage" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle id="ImportHistoryPageTitle">
+				<f:heading>
+					<smartVariantManagement:SmartVariantManagement id="PageVariant" persistencyKey="PageVariantKey" showExecuteOnSelection="true"
+						showShare="true" save="onVaraintSave" lifecycleSupport="true"/>
+				</f:heading>
+				<f:actions>
+					<Button text="{i18n>BTN_UPLOAD_NEW}" class="sapUiTinyMargin" press="onUploadNew" type="Transparent"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader>
+				<f:content>
+					<smartfilterbar:SmartFilterBar id="smartFilterBar" showClearButton="true" enableBasicSearch="true" useDateRangeType="true"
+						persistencyKey="SmartFilterKey" useToolbar="false" smartVariant="PageVariant" search="onSearch" afterVariantLoad="onVariantLoaded"
+						initialized="onSFBInitialized">
+						<!--<smartfilterbar:customData>-->
+						<!--	<core:CustomData key="dateFormatSettings" value='\{"UTC":true,"style":"medium"\}'/>-->
+						<!--</smartfilterbar:customData>-->
+						<smartfilterbar:controlConfiguration>
+							<smartfilterbar:ControlConfiguration id="ImportDate" label="{i18n>LABEL_DATE_RANGE}" key="SalesDocumentImportDateTime"
+								conditionType="sap.ui.comp.config.condition.DateRangeType" visibleInAdvancedArea="true" index="0" groupId="_BASIC"/>
+						</smartfilterbar:controlConfiguration>
+						<smartfilterbar:layoutData>
+							<FlexItemData id="filterFlexItem" shrinkFactor="0"/>
+						</smartfilterbar:layoutData>
+					</smartfilterbar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smarttable:SmartTable id="smartTable" smartFilterId="smartFilterBar" persistencyKey="ImportHistorySmartTable" smartVariant="PageVariant"
+				showRowCount="true" useTablePersonalisation="true" enableAutoBinding="false" tableType="ResponsiveTable" demandPopin="true"
+				showDetailsButton="true" detailsButtonSetting="None,Medium,Low" requestAtLeastFields="SalesDocumentImportID,SlsDocImprtProcgStsCriticality" header="{i18n>LABEL_IMPORTS_HEADER}"
+				beforeRebindTable="onbeforeRebindTable" useExportToExcel="false" height="100%" enableAutoColumnWidth="true">
+				<!--<smarttable:customData>-->
+				<!--	<core:CustomData id="tableCustomData" key="dateFormatSettings" value='\{"UTC":true,"style":"medium"\}'/>-->
+				<!--</smarttable:customData>-->
+				<smarttable:layoutData>
+					<FlexItemData id="tableFlexItem" growFactor="1"/>
+				</smarttable:layoutData>
+				<smarttable:customToolbar>
+					<OverflowToolbar id="importHistoryOverflowToolbar" design="Transparent">
+						<ToolbarSpacer/>
+						<Button id="importHistorySetAsCompletedButton" visible="false" enabled="false" text="{i18n>BUTTON_SET_AS_COMPLETED}" press="onPressSetAsCompleted" type="Transparent"/>
+					</OverflowToolbar>
+				</smarttable:customToolbar>
+				<Table 
+					id="importHistoryInnerTable"
+					selectionChange="onInnerTableSelectionChange"
+                    rememberSelections="true"
+					growing="true" growingThreshold="20" growingScrollToLoad="true" 
+					sticky="ColumnHeaders,HeaderToolbar"
+				>
+					<items>
+						<ColumnListItem type="Navigation" press="onItemPress" highlight="{path: 'SlsDocImprtProcgStsCriticality', formatter: '.formatter.setHeaderHighlight'}"></ColumnListItem>
+					</items>
+				</Table>
+			</smarttable:SmartTable>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

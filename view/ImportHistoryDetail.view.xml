@@ -1,0 +1,130 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:smarttable="sap.ui.comp.smarttable" xmlns:smartlink="sap.ui.comp.navpopover" xmlns:smartfield="sap.ui.comp.smartfield"
+	controllerName="cus.sd.salesorder.imports1.controller.ImportHistoryDetail">
+	<ObjectPageLayout id="ImportHistoryItemOP" showTitleInHeaderContent="true" alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle >
+				<expandedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+						<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+							<m:Title id="IHIPageTitle" text="{SalesDocumentImportName}" wrapping="true" class="sapUiSmallMarginEnd"/>
+						</m:VBox>
+					</m:FlexBox>
+				</expandedHeading>
+				<actions>
+					<m:Button id="btn-refresh" text="{i18n>REFRESH}" type="Emphasized" press="onRefreshClick"/>
+					<m:Button id="btn-ToHistory" text="{i18n>BUTTON_VIEW_IMPORTS}" press="onBackToHisotry" class="sapUiTinyMargin"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<!--<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">-->
+			<l:VerticalLayout id="IconLayout">
+				<f:Avatar id="Picture" src="sap-icon://my-sales-order" displaySize="M" displayShape="Circle" class="sapUiTinyMarginEnd"></f:Avatar>
+			</l:VerticalLayout>
+			<l:VerticalLayout id="CreationInfoLayout" class="sapUiMediumMarginEnd">
+				<!--Creation Info-->
+				<m:ObjectAttribute id="OACreatedBy" title="{i18n>LABEL_CREATED_BY}"
+					text="{parts:[{ path: 'CreatedByUser' },{ path: 'CreatedByUserName'}],formatter: '.formatter.formatUserName'}" class="sapUiTinyMarginBottom"/>
+				<m:ObjectAttribute id="OACreationDate" title="{i18n>LABEL_CREATED_ON}"
+					text="{path:'SalesDocumentImportDateTime',type:'sap.ui.model.type.DateTime',formatOptions: {style: 'medium'}}"/>
+			</l:VerticalLayout>
+			<!--<l:VerticalLayout id="ImportStatusLayout" class="sapUiMediumMarginEnd">-->
+			<!--Import Status-->
+			<!--	<m:VBox id="ImportStatusBox" justifyContent="Start" class="sapUiSmallMarginEnd">-->
+			<!--		<m:Label id="ImportStatusLabel" text="{i18n>LABEL_IMPORT_STATUS}" labelFor="OSImportStatus"/>-->
+			<!--		<m:ObjectStatus id="OSImportStatus" text="{SalesDocumentImportStatus_Text}" class="sapMObjectStatusLarge"/>-->
+			<!--	</m:VBox>-->
+			<!--</l:VerticalLayout>-->
+			<l:VerticalLayout id="CountOfCreatedLayout" class="sapUiMediumMarginEnd">
+				<!--Count of Created-->
+				<m:VBox justifyContent="Start" class="sapUiSmallMarginEnd">
+					<m:Label text="{i18n>LABEL_COUNT_OF_CREATED}"/>
+					<m:ObjectStatus text="{SlsDocImprtNumberOfCreated}" class="sapMObjectStatusLarge"/>
+				</m:VBox>
+			</l:VerticalLayout>
+			<l:VerticalLayout id="CountOfFailedLayout" class="sapUiMediumMarginEnd">
+				<!--Count of Failed-->
+				<m:VBox justifyContent="Start" class="sapUiSmallMarginEnd">
+					<m:Label text="{i18n>LABEL_COUNT_OF_FAILED}"/>
+					<m:ObjectStatus text="{SlsDocImprtNumberOfFailed}"
+						state="{ path: 'SlsDocImprtProcessingStatus', formatter: '.formatter.setNumberofFailedState' }" class="sapMObjectStatusLarge"/>
+				</m:VBox>
+			</l:VerticalLayout>
+			<l:VerticalLayout id="CountOfMnllyCmpltdLayOut" class="sapUiMediumMarginEnd" visible="false">
+				<!--Count of Manually Completed-->
+				<m:VBox justifyContent="Start" class="sapUiSmallMarginEnd">
+					<m:Label text="{i18n>LABEL_COUNT_OF_MNLLYCMPLTD}"/>
+					<m:ObjectStatus text="{SlsDocImprtNrOfMnllyCmpltd}" class="sapMObjectStatusLarge"/>
+				</m:VBox>
+			</l:VerticalLayout>
+			<l:VerticalLayout id="ProcessingStatusLayout" class="sapUiMediumMarginEnd">
+				<!--Overall Status-->
+				<m:VBox justifyContent="Start" class="sapUiSmallMarginEnd">
+					<m:Label text="{i18n>LABEL_PROCESSING_STATUS}" labelFor="importHistoryProcessingStatusOS"/>
+					<m:ObjectStatus id="importHistoryProcessingStatusOS" text="{SlsDocImprtProcessingStatus_Text}"
+						state="{ path: 'SlsDocImprtProcessingStatus', formatter: '.formatter.setOverallStatusState' }" class="sapMObjectStatusLarge"/>
+				</m:VBox>
+			</l:VerticalLayout>
+		</headerContent>
+		<sections>
+			<ObjectPageSection showTitle="false">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<l:VerticalLayout id="HITableLayout" width="100%" class="sapUiContentPadding">
+								<smarttable:SmartTable direction="Column" showRowCount="true" tableType="ResponsiveTable" header="{i18n>SALES_ORDER_TITLE}"
+									enableAutoBinding="true" id="importHistoryItemSmartTable" useExportToExcel="true" beforeRebindTable="onBeforeRebindTable"
+									requestAtLeastFields="SalesDocumentImportID,SalesDocumentTemporaryID,ApplicationLogHandle,SalesDocumentCreationStatus"
+									showDetailsButton="true" detailsButtonSetting="None,Medium,Low" demandPopin="true" enableAutoColumnWidth="true">
+									<!--<smarttable:customData>-->
+									<!--	<core:CustomData id="ItemtableCustomData" key="dateFormatSettings" value='\{"UTC":true,"style":"medium"\}'/>-->
+									<!--</smarttable:customData>-->
+									<smarttable:semanticObjectController>
+										<smartlink:SemanticObjectController id="SemanticController" navigate="onSmartLinkNavigate"/>
+									</smarttable:semanticObjectController>
+									<smarttable:customToolbar>
+										<m:OverflowToolbar id="HITableToolbar">
+											<m:ToolbarSpacer/>
+											<m:SearchField id="searchItems" width="30%" search="onSearchItems"/>
+											<m:Button id="importHistoryItemSetAsCompletedButton" visible="false" enabled="false" text="{i18n>BUTTON_SET_AS_COMPLETED}"
+												press="onPressSetAsCompleted" type="Transparent"/>
+										</m:OverflowToolbar>
+									</smarttable:customToolbar>
+									<m:Table id="importHistoryItemInnerTable" growing="true" growingThreshold="20" growingScrollToLoad="true" mode="None"
+										selectionChange="onItemInnerTableSelectionChange" rememberSelections="true" sticky="ColumnHeaders,HeaderToolbar">
+										<m:columns>
+											<m:Column id="CreationLogColumn" width="3rem" hAlign="Center">
+												<m:customData>
+													<core:CustomData id="CreationLogCD" key="p13nData" value='\{"columnKey": "ApplicationLogHandle", "maxLength": "2", "columnIndex":"2"}'/>
+												</m:customData>
+												<m:Text id="CreationLogText" text="{i18n>LOG}" tooltip="{i18n>LOG}"/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem id="SalesOrderImport" type="Inactive"
+												highlight="{path: 'SalesDocumentCreationStatus', formatter: '.formatter.setCreationHighlight'}">
+												<m:cells>
+													<core:Icon src="{parts : [{ path: 'SalesDocumentCreationStatus' },{ path: 'ApplicationLogHandle'}], formatter: '.formatter.setIconForLog'}"
+														color="{path: 'SalesDocumentCreationStatus', formatter: '.formatter.setIconColorForLog'}" tooltip="{i18n>LOG_DETAILS}"
+														press="onLogIconPressed" decorative="false"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								</smarttable:SmartTable>
+							</l:VerticalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer/>
+	</ObjectPageLayout>
+</mvc:View>

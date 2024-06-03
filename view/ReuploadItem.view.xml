@@ -1,0 +1,33 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View id="reuploaderItemView" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	controllerName="cus.sd.salesorder.imports1.controller.ReuploadItem" height="100%">
+	<Page id="reuploadPreviewItemPage" showFooter="false" showHeader="false" class="sapUiResponsiveContentPadding">
+		<content>
+			<Table id="reuploadItemTable" items="{reuploadSalesDoc>/salesItemData}" autoPopinMode="true" contextualWidth="Auto" fixedLayout="false"
+				hiddenInPopin="Low" popinChanged=".commonEventHandler.onPopinChanged">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="{i18n>ITEM_TABLE_TITLE}" level="H3"/>
+						<ToolbarSpacer/>
+						<Button id="reuploadItemDetailBtn" text="{i18n>BUTTON_SHOW_DETAIL}" press=".commonEventHandler.onHandleShowHideDetail"/>
+						<Button icon="sap-icon://action-settings" press="onItemSettingDialogPress">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns></columns>
+				<items>
+					<ColumnListItem id="reuploadItemListItem" highlight="{reuploadSalesDoc>HIGHLIGHT}">
+						<cells></cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

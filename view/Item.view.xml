@@ -1,0 +1,56 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View id="importItemView" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:u="sap.ui.unified" xmlns:t="sap.ui.table"
+	xmlns:l="sap.ui.layout" controllerName="cus.sd.salesorder.imports1.controller.Item">
+	<f:DynamicPage id="importItemPage" showFooter="false">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{ui>/Title}" wrapping="true" level="H2" />
+				</f:heading>
+				<f:actions>
+					<Button 
+						id="enterOrExitFullScreenBtn" 
+						type="Transparent" 
+						icon="sap-icon://full-screen" 
+						press="onHandleEnterOrExitFullScreen" 
+						tooltip="{i18n>BUTTON_ITEM_TOOLTIP_ENTERFULLSCREEN}" 
+						visible="{= ${ui>/actionButtonsInfo} === 1 || ${ui>/actionButtonsInfo} === 2}">
+					</Button>
+					<Button id="closeScreenBtn" tooltip="{i18n>BUTTON_ITEM_TOOLTIP_CLOSEBUTTON}" type="Transparent" icon="sap-icon://decline" press="onDeclinePress"></Button>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader></f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<VBox id="itemPageVBox" fitContainer="true">
+				<Table id="importItemTable" items="{oData>/salesItemData}" autoPopinMode="true" 
+					contextualWidth="Auto" fixedLayout="false" hiddenInPopin="Low" popinChanged=".commonEventHandler.onPopinChanged">
+					<headerToolbar>
+						<OverflowToolbar>
+							<Title text="{i18n>ITEM_TABLE_TITLE}" level="H3"/>
+							<ToolbarSpacer/>
+							<Button id="importItemDetailBtn" text="{i18n>BUTTON_SHOW_DETAIL}" press=".commonEventHandler.onHandleShowHideDetail"/>
+							<Button id="importItemSettingBtn" icon="sap-icon://action-settings" press="onItemSettingDialogPress">
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow"/>
+								</layoutData>
+							</Button>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns></columns>
+					<items>
+						<ColumnListItem id="importItemListItem" highlight="{importSalesOrder>HIGHLIGHT}">
+							<cells></cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
